@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /// <summary>
 /// Test script for OneEuroFilter
@@ -19,13 +20,13 @@ public class OneEuroFilterTest : MonoBehaviour
         filter = new OneEuroFilter();
         
         Debug.Log("[OneEuroFilterTest] Filter initialized");
-        Debug.Log("[OneEuroFilterTest] Press Space to toggle test");
+        Debug.Log("[OneEuroFilterTest] Click 'Run Test' checkbox in Inspector to toggle");
     }
     
     void Update()
     {
-        // Toggle test with Space key
-        if (Input.GetKeyDown(KeyCode.Space))
+        // Toggle test with Space key (New Input System)
+        if (Keyboard.current != null && Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             runTest = !runTest;
             Debug.Log($"[OneEuroFilterTest] Test {(runTest ? "started" : "stopped")}");
